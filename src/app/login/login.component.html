@@ -1,0 +1,41 @@
+<div style="background-image:url(./assets/bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    min-height: 830px;
+    margin: 0px;
+    padding: 10px;">
+    <div class="container">
+        <div class="mx-auto col-sm-12 col-md-10 col-lg-8 col-xl-6" style="background-color:rgba(15, 151, 95, 0.3); position: relative; height: 280px; margin-top: 200px; border: 1px solid black;">
+            <div style="position: absolute; top: 40%; left: 55%;">
+                <h6 style="color: white;">Not a Member? Register here.</h6>
+                <button type="button" class="btn" style="background-color: rgb(20, 143, 8); color: white; border-radius: 50px; display: block; margin: auto;" (click)="register()">
+                    Register
+                </button>
+            </div>
+            <div style="border: 1px solid black; background-color: whitesmoke; position: absolute; top:-30px; left: 30px;" class="col-8 col-sm-6 col-md-5 col-lg-4">
+                <h3 class="text-center pt-2 pb-2" style="background-color: rgb(20, 143, 8); color: white;">Login</h3>
+                <form class="row g-3" #formref="ngForm" (ngSubmit)="onSubmit(formref.value)">
+                    <div class="col-9 mx-auto mt-4">
+                        <label for="username" style="display: block; text-align: center;">username</label>
+                        <input type="text" class="form-control mt-2" id="username" name="username" ngModel style="border-radius: 10px; line-height: 15px;">
+                    </div>
+                    <div class="col-9 mx-auto">
+                        <label for="password" style="display: block; text-align: center;">Password</label>
+                        <input type="password" class="form-control mt-2" id="password" name="password" ngModel style="border-radius: 10px; line-height: 15px;">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn mb-2" style="background-color: rgb(20, 143, 8); color: white; border-radius: 50px;">Login</button>
+                    </div>
+                    <div class="text-center mb-3">
+                        <a href="">forgot password?</a>
+                    </div>
+                </form>
+        </div>
+        </div>
+        
+    </div>
+</div>
+
+

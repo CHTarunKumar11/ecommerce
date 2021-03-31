@@ -1,0 +1,54 @@
+<div style="background-image:url(./assets/bgimg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    min-height: 830px;
+    margin: 0px;
+    padding: 10px;">
+    <div>
+        <div class="mx-auto col-sm-12 col-md-10 col-lg-8 col-xl-6" style="background-color:rgb(230, 95, 95,0.3); position: relative; height: 300px; margin-top: 200px; border: 1px solid black;">
+            <div class="sidestyle">
+                <h6 style="color: white;">Already Registered? Login here.</h6>
+                <button type="button" class="btn" style="background-color: rgb(241, 78, 13); color: white; border-radius: 50px; display: block; margin: auto;" (click) = "login()">
+                    Login
+                </button>
+            </div>
+            <div style="border: 1px solid black; background-color: whitesmoke; position: absolute; top:-30px; left: 30px;" class="col-8 col-sm-6 col-md-5 col-lg-4">
+                <h3 class="text-center pt-2 pb-2" style="background-color: rgb(241, 78, 13); color: white;">Registration form</h3>
+                <form class="row g-3" #formref="ngForm" (ngSubmit)="formref.form.valid && onSubmit(formref.value)">
+                    <div class="col-9 mx-auto mt-4">
+                        <input type="text" class="form-control" id="name" name="name" #r1="ngModel" ngModel required placeholder="Name"
+                            style="border-radius: 10px; line-height: 15px;">
+                        <div *ngIf="(r1.invalid && r1.touched) || (formref.submitted && r1.invalid)" class="text-danger">Name is mandatory</div>
+                    </div>
+                    <div class="col-9 mx-auto">
+                        <input type="email" class="form-control" id="email" name="email" ngModel placeholder="Email"
+                            style="border-radius: 10px; line-height: 15px;">
+                    </div>
+                    <div class="col-9 mx-auto">
+                        <input type="number" class="form-control" id="mobile" name="mobile" #r5="ngModel" ngModel required placeholder="Phone Number"
+                            style="border-radius: 10px; line-height: 15px;">
+                        <div *ngIf="(r5.invalid && r5.touched) || (formref.submitted && r5.invalid)" class="text-danger">Phone Number is mandatory</div>
+                    </div>
+                    <div class="col-9 mx-auto">
+                        <input type="text" class="form-control" id="username" name="username" ngModel required #r2="ngModel" placeholder="Userame"
+                        style="border-radius: 10px; line-height: 15px;">
+                        <div *ngIf="(r2.invalid && r2.touched) || (formref.submitted && r2.invalid)" class="text-danger">Username is mandatory</div>
+                    </div>
+                    <div class="col-9 mx-auto">
+                        <input type="password"  class="form-control" id="password" name="password" ngModel #r3="ngModel" required minlength="4" placeholder="Password"
+                            style="border-radius: 10px; line-height: 15px;">
+                        <div *ngIf="(r3.errors?.required && r3.touched) || (formref.submitted && r3.errors?.required)" class="text-danger">password is mandatory</div>
+                        <div *ngIf="(r3.errors?.minlength && r3.dirty) || (formref.submitted && r3.errors?.minlength)" class="text-danger">Enter atleast 4 characters</div> 
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn mb-3" style="background-color: rgb(241, 78, 13); color: white; border-radius: 50px;">Register</button>
+                    </div>
+                </form>
+        </div>
+        </div>
+        
+    </div>
+</div>
+

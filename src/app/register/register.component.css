@@ -1,0 +1,15 @@
+@media only screen and (max-width : 576px)
+{
+    .sidestyle
+    {
+        color: brown;
+    }
+}
+.sidestyle
+{
+    position: absolute;
+    top: 40%;
+    left: 55%;
+}
+
+

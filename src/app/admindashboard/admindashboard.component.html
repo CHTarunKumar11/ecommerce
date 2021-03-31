@@ -1,0 +1,111 @@
+<div style="background-image:url(./assets/bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    min-height: 830px;
+    margin: 0px;
+    padding: 10px;"
+    >
+    
+
+    <div>
+        <button class="btn btn-warning" type="button" style="float: left; margin: 10px;" data-bs-toggle="collapse" data-bs-target="#view" (click)="view()">
+            View Products<fa-icon [icon]="faEye" style="padding : 0px 8px"></fa-icon>
+        </button>
+
+        <button class="btn btn-danger" type="button" style="float: right; margin: 10px;" data-bs-toggle="collapse" data-bs-target="#add" (click)="add()">
+            Add Product<fa-icon [icon]="faPlus" style="padding : 10px 8px"></fa-icon></button>   
+    </div>
+
+    <div class="collapse" id="view">
+        <div *ngIf="sview" style="margin-top: 120px;">
+            <h3 class="text-center text-primary">Products List</h3>
+            <table class="table table-bordered text-center mt-3">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Model No</th>
+                        <th>Description</th>
+                        <th>Brand Name</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let product of products">
+                    <tr *ngIf="(!s && product.id === myrefid)"> 
+                        <td><input type="text" name="productname" [value]="product.productname" #r1></td>
+                        <td><input type="text" name="modelno" [value]="product.modelno" #r2></td>
+                        <td><input type="text" name="description" [value]="product.description" #r3></td>
+                        <td><input type="text" name="brandName" [value]="product.brandName" #r4></td>
+                        <td><input type="text" name="price" [value]="product.price" #r5></td>
+                        <td><input type="file" name="photo" (change) = "incomingFile($event)" accept="image/*"></td>
+                        <td><a (click)="save(product.id,r1.value,r2.value,r3.value,r4.value,r5.value)"><fa-icon [icon]="faSave" style="color: rgb(6, 71, 15);"></fa-icon></a></td>
+                        <td><a (click)="delete(product.id)"><fa-icon [icon]="faTrashAlt" style="color: rgb(6, 71, 15);"></fa-icon> </a></td>
+                    </tr>
+                    <tr *ngIf="(s)||(!s && product.id !== myrefid)">
+                        <td>{{product.productname}}</td>
+                        <td>{{product.modelno}}</td>
+                        <td>{{product.description}}</td>
+                        <td>{{product.brandName}}</td>
+                        <td>{{product.price}}</td>
+                        <td><img [src]="product.ImgLink" width="50px" height="50px"></td>
+                        <td><a (click)="edit(product.id)"><fa-icon [icon]="faEdit" style="color: rgb(6, 71, 15);"></fa-icon></a></td>
+                        <td><a (click)="delete(product.id)"><fa-icon [icon]="faTrashAlt" style="color: rgb(6, 71, 15);"></fa-icon> </a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="collapse show" id="add">
+        <div class="container" *ngIf="sadd">
+            <div style="margin: auto; margin-top: 120px;" class="col-md-6 col-10">
+                <h3 class="text-center text-primary">Add Product</h3>
+                <form class="row g-3 mt-2" #formref="ngForm" (ngSubmit)="onSubmit(formref.value)">
+                    <div class="col-md-6 mb-3">
+                        <input type="text" class="form-control" id="productname" name="productname" placeholder="Product Name" ngModel>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <input type="text" class="form-control" id="modelno" name="modelno" ngModel  placeholder="Model No">
+                    </div>
+                    <div class="col-12 mb-3">
+                        <input type="text" class="form-control" id="description" name="description" ngModel  placeholder="Description">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <input type="text" class="form-control" id="brandName" name="brandName" ngModel placeholder="Brand Name">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                      <input type="text" class="form-control" id="price" name="price" ngModel placeholder="Price">
+                    </div>
+                    <div class="col-12 mb-3">
+                      <label for="photo" class="form-label">Upload Image</label>
+                      <input type="file" class="form-control" id="photo" name="photo" (change) = "incomingFile($event)" accept="image/*">
+                    </div>
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-primary" style="display: block; margin: auto;">Add<fa-icon [icon]="faThumbsUp" style="padding : 10px 8px"></fa-icon></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
