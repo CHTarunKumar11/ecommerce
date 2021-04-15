@@ -3,6 +3,7 @@ const app = exp();
 const mongodb = require("mongodb").MongoClient;
 const path = require("path");
 
+require("dotenv").config();
 
 app.use(exp.static(path.join(__dirname,"./dist/ecommerceapp")));
 
@@ -16,7 +17,7 @@ app.use("/user",userApiObj);
 app.use("/product",productApiObj);
 app.use("/cart",cartApiObj)
 
-const dburl="mongodb+srv://project:project@cluster0.2o9tz.mongodb.net/MyAppDatabase?retryWrites=true&w=majority";
+const dburl="mongodb+srv://project:project@cluster0.2o9tz.mongodb.net/MyAppDatabase?retryWrites=true&w=majority"
 
 mongodb.connect(dburl,{useNewUrlParser:true,useUnifiedTopology:true})
 .then(
@@ -44,5 +45,6 @@ app.use((err,req,res,next)=>{
     res.send({message:"error occured",reason:err.message});
 })
 
-const port = 4000;
-app.listen(port,()=>console.log(`Server running on port ${port}....`));
+const port = process.env.PORT;
+
+app.listen(process.env.PORT,()=>console.log(`Server started on port ${port}`));
