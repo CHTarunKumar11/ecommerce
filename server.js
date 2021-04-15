@@ -16,7 +16,7 @@ app.use("/user",userApiObj);
 app.use("/product",productApiObj);
 app.use("/cart",cartApiObj)
 
-const dburl="";
+const dburl="mongodb+srv://project:project@cluster0.2o9tz.mongodb.net/MyAppDatabase?retryWrites=true&w=majority";
 
 mongodb.connect(dburl,{useNewUrlParser:true,useUnifiedTopology:true})
 .then(
